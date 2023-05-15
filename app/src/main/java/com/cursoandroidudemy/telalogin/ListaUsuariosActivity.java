@@ -18,15 +18,22 @@ public class ListaUsuariosActivity extends AppCompatActivity {
         setContentView(R.layout.activity_lista_usuarios);
         //getSupportActionBar().setDisplayHomeAsUpEnabled(true); Mostra seta de voltar
 
+        //Criando repository
+        RepositoryUsers repositoryUsers = new RepositoryUsers(this);
 
         //Chamando a listview e buscando os usuarios cadastrados
-
         ListView listUsuarios = findViewById(R.id.listUsuarios);
-        ArrayList<Usuario> users = (ArrayList<Usuario>) getIntent().getSerializableExtra("lista_usuarios");
 
         //Criando o Adapter para usar o layout simple_list(padrão do android) usando a lista de usuarios
-        ArrayAdapter<Usuario> adapter = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, users);
-        listUsuarios.setAdapter(adapter);
+        AdapterUserList adapterUserList = new AdapterUserList(this, repositoryUsers.listarUsuario());
+
+
+        listUsuarios.setAdapter(adapterUserList);
+
+
+
+        //ArrayAdapter<Usuario> adapter = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, users);
+        //listUsuarios.setAdapter(adapter);
 
     }
 

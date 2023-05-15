@@ -9,7 +9,13 @@ public class Usuario implements Serializable {
     public Usuario() {
     }
 
-    ;
+    public void setSenha(String senha) {
+        this.senha = senha;
+    }
+
+    public void setUsuario(String usuario) {
+        this.usuario = usuario;
+    }
 
     public Usuario(String senha, String usuario) {
         this.senha = senha;

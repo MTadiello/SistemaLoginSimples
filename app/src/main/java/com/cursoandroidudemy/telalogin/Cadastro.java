@@ -37,6 +37,11 @@ public class Cadastro extends AppCompatActivity {
             Toast.makeText(this, "Insira valores nos campos", Toast.LENGTH_SHORT).show();
         } else {
             users.add(new Usuario(Senha, Usuario));
+
+            RepositoryUsers repositoryUsers = new RepositoryUsers(this);
+            repositoryUsers.adicionarUsuario(new Usuario(Senha, Usuario));
+
+
             Toast.makeText(this, "Usuario cadastrado", Toast.LENGTH_SHORT).show();
 
             Intent intent = new Intent();

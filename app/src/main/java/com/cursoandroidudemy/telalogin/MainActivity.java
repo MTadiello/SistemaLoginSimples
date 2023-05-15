@@ -15,14 +15,19 @@ import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
 
+    List<Usuario> UsuarioCadastro = new ArrayList<Usuario>();
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        RepositoryUsers repositoryUsers = new RepositoryUsers(this);
+        UsuarioCadastro = repositoryUsers.listarUsuario();
+
     }
 
-    ArrayList<Usuario> UsuarioCadastro = new ArrayList<Usuario>();
+
 
     private void alert(String s) {
         Toast.makeText(this, s, Toast.LENGTH_LONG).show();
@@ -76,7 +81,7 @@ public class MainActivity extends AppCompatActivity {
         startActivityForResult(intent, 2);
     }
 
-    @Override
+    /*@Override
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
 
@@ -87,16 +92,12 @@ public class MainActivity extends AppCompatActivity {
             for (Usuario c : valor)
                 Log.i("Alisson", c.toString());
         }
-    }
+    }*/
 
 
     public void onClickListaUsuarios(View view) {
 
-        Bundle bundle = new Bundle();
-        bundle.putSerializable("lista_usuarios", UsuarioCadastro);
-
         Intent intent = new Intent(this, ListaUsuariosActivity.class);
-        intent.putExtras(bundle);
         startActivity(intent);
 
     }
