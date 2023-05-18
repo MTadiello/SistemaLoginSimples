@@ -22,12 +22,24 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        RepositoryUsers repositoryUsers = new RepositoryUsers(this);
-        UsuarioCadastro = repositoryUsers.listarUsuario();
+
 
     }
 
+    @Override
+    protected void onStart() {
+        super.onStart();
 
+
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+
+        RepositoryUsers repositoryUsers = new RepositoryUsers(this);
+        UsuarioCadastro = repositoryUsers.listarUsuario();
+    }
 
     private void alert(String s) {
         Toast.makeText(this, s, Toast.LENGTH_LONG).show();
@@ -38,15 +50,19 @@ public class MainActivity extends AppCompatActivity {
         EditText tLogin = findViewById(R.id.tLogin);
         EditText tSenha = findViewById(R.id.tSenha);
 
+
         String login = tLogin.getText().toString();
         String senha = tSenha.getText().toString();
 
         boolean existeUsuario = false;
 
+        Usuario usuario = null;
+
         for (Usuario c : UsuarioCadastro) {
 
-            if (login.equals(c.getUsuario()) && senha.equals(c.getSenha())) {
+            if (login.equals(c.getEmail()) && senha.equals(c.getSenha())) {
                 existeUsuario = true;
+                usuario = c;
                 break;
             } else {
                 existeUsuario = false;
@@ -54,11 +70,11 @@ public class MainActivity extends AppCompatActivity {
 
 
         }
-        if (existeUsuario == true) {
+        if (existeUsuario == true && usuario != null) {
             alert("Login bem sucessido");
 
             Bundle bundle = new Bundle();
-            bundle.putString("Meu_nome", login);
+            bundle.putString("Meu_nome", usuario.getApelido() );
 
             Intent intent = new Intent(this, Filha.class);
             intent.putExtras(bundle);

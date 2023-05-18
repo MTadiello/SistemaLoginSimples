@@ -4,7 +4,9 @@ import java.io.Serializable;
 
 public class Usuario implements Serializable {
     private String senha;
-    private String usuario;
+    private String email;
+
+    private String apelido;
 
     public Usuario() {
     }
@@ -13,25 +15,30 @@ public class Usuario implements Serializable {
         this.senha = senha;
     }
 
-    public void setUsuario(String usuario) {
-        this.usuario = usuario;
+    public void setEmail(String email) {
+        this.email = email;
     }
 
-    public Usuario(String senha, String usuario) {
+    public void setApelido(String apelido){this.apelido = apelido; }
+
+    public Usuario(String senha, String email, String apelido) {
         this.senha = senha;
-        this.usuario = usuario;
+        this.email = email;
+        this.apelido = apelido;
     }
 
     public String getSenha() {
         return senha;
     }
 
-    public String getUsuario() {
-        return usuario;
+    public String getEmail() {
+        return email;
     }
+
+    public String getApelido() { return apelido; }
 
     @Override
     public String toString() {
-        return usuario;
+        return apelido;
     }
 }

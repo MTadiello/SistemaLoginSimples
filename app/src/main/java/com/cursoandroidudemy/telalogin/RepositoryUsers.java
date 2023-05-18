@@ -26,7 +26,8 @@ public class RepositoryUsers extends SQLiteOpenHelper {
     public void onCreate(SQLiteDatabase sqLiteDatabase) {
         String sql = " create table usuario(\n" +
                 "            id INTEGER PRIMARY KEY,\n" +
-                "            nome TEXT NOT NULL,\n" +
+                "            apelido TEXT NOT NULL,\n" +
+                "            email TEXT NOT NULL,\n" +
                 "            senha INTEGER NOT NULL" +
                 "    )";
 
@@ -43,8 +44,10 @@ public class RepositoryUsers extends SQLiteOpenHelper {
     public void adicionarUsuario(Usuario user){
 
         ContentValues contentValues = new ContentValues();
-        contentValues.put("nome",user.getUsuario());
+        contentValues.put("email",user.getEmail());
+        contentValues.put("apelido",user.getApelido());
         contentValues.put("senha",user.getSenha());
+
 
         getWritableDatabase().insert("usuario",null,contentValues);
 
@@ -56,15 +59,17 @@ public class RepositoryUsers extends SQLiteOpenHelper {
 
         List<Usuario> listarUsuario = new ArrayList<>();
         SQLiteDatabase db = getReadableDatabase();
-        Cursor cursor = db.rawQuery("select nome, senha from usuario",null);
+        Cursor cursor = db.rawQuery("select email, apelido, senha from usuario",null);
         cursor.moveToFirst();
 
         for(int i=0; i < cursor.getCount(); i++){
 
             Usuario user = new Usuario();
 
-            user.setUsuario(cursor.getString(0));
-            user.setSenha(String.valueOf(cursor.getInt(1)));
+            user.setEmail(cursor.getString(0));
+            user.setApelido(String.valueOf(cursor.getString(1)));
+            user.setSenha(String.valueOf(cursor.getInt(2)));
+
 
             listarUsuario.add(user);
             cursor.moveToNext();

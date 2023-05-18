@@ -16,7 +16,7 @@ public class ListaUsuariosActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_lista_usuarios);
-        //getSupportActionBar().setDisplayHomeAsUpEnabled(true); Mostra seta de voltar
+        //getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
         //Criando repository
         RepositoryUsers repositoryUsers = new RepositoryUsers(this);

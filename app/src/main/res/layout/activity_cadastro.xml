@@ -23,14 +23,31 @@
 
 
         <TextView
-            android:id="@+id/txtCadastroUsuario"
+            android:id="@+id/txtCadastroEmail"
             android:layout_width="300dp"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:text="Nome de usuário" />
+            android:text="Email do usuário" />
 
         <EditText
-            android:id="@+id/EditTxtCadastroUsuario"
+            android:id="@+id/EditTxtCadastroEmail"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:ems="10"
+            android:inputType="textPersonName" />
+
+
+
+        <TextView
+            android:id="@+id/txtCadastroApelido"
+            android:layout_width="300dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:text="Apelido do usuário: " />
+
+        <EditText
+            android:id="@+id/EditTxtCadastroApelido"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"

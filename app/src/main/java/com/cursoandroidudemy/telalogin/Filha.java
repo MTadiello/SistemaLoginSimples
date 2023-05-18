@@ -18,10 +18,10 @@ public class Filha extends  AppCompatActivity implements Serializable {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_filha);
 
-        String login = (String) getIntent().getSerializableExtra("Meu_nome");
+        String apelido = (String) getIntent().getSerializableExtra("Meu_nome");
 
         TextView bemVindo = findViewById(R.id.bemVindo);
-        bemVindo.setText("Oi "+login);
+        bemVindo.setText("Oi "+ apelido);
     }
 
 

@@ -34,8 +34,8 @@ public class AdapterUserList extends ArrayAdapter<Usuario> {
             view = layoutInflater.inflate(R.layout.list_user_item_layout,parent, false);
         }
         Usuario users = list.get(position);
-        TextView nomeUsuario = view.findViewById(R.id.txtViewUserName);
-        nomeUsuario.setText(users.getUsuario());
+        TextView userName = view.findViewById(R.id.txtViewUserEmail);
+        userName.setText(users.getEmail());
 
         return view;
     }
