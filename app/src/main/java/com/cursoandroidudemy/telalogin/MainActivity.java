@@ -13,7 +13,7 @@ import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
 
-    List<Usuario> UsuarioCadastro = new ArrayList<Usuario>();
+    List<Usuario> usuarioCadastro = new ArrayList<Usuario>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -30,7 +30,7 @@ public class MainActivity extends AppCompatActivity {
     protected void onResume() {
         super.onResume();
         RepositoryUsers repositoryUsers = new RepositoryUsers(this);
-        UsuarioCadastro = repositoryUsers.listarUsuario();
+        usuarioCadastro = repositoryUsers.listarUsuario();
     }
 
     private void alert(String s) {
@@ -50,7 +50,7 @@ public class MainActivity extends AppCompatActivity {
 
         Usuario usuario = null;
 
-        for (Usuario c : UsuarioCadastro) {
+        for (Usuario c : usuarioCadastro) {
 
             if (login.equals(c.getEmail()) && senha.equals(c.getSenha())) {
                 existeUsuario = true;
