@@ -10,7 +10,7 @@ import android.widget.Toast;
 
 import java.util.ArrayList;
 
-public class Cadastro extends AppCompatActivity {
+public class CadastroActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -24,24 +24,24 @@ public class Cadastro extends AppCompatActivity {
 
     public void onClickCadastrar(View view) {
 
-        EditText EditTxtCadastroEmail = findViewById(R.id.EditTxtCadastroEmail);
-        EditText EditTxtCadastroSenha = findViewById(R.id.EditTxtCadastroSenha);
-        EditText EditTxtCadastroApelido = findViewById(R.id.EditTxtCadastroApelido);
+        EditText editTxtCadastroEmail = findViewById(R.id.EditTxtCadastroEmail);
+        EditText editTxtCadastroSenha = findViewById(R.id.EditTxtCadastroSenha);
+        EditText editTxtCadastroApelido = findViewById(R.id.EditTxtCadastroApelido);
 
-        String Usuario = EditTxtCadastroEmail.getText().toString();
-        String Senha = EditTxtCadastroSenha.getText().toString();
-        String Apelido = EditTxtCadastroApelido.getText().toString();
+        String usuario = editTxtCadastroEmail.getText().toString();
+        String senha = editTxtCadastroSenha.getText().toString();
+        String apelido = editTxtCadastroApelido.getText().toString();
 
 
-        if (Usuario.equals("") || Senha.equals("")) {
+        if (usuario.equals("") || senha.equals("")) {
             Toast.makeText(this, "Insira valores nos campos", Toast.LENGTH_SHORT).show();
-        } else if (verificarEmailExistente(Usuario)) {
+        } else if (verificarEmailExistente(usuario)) {
             Toast.makeText(this, "E-mail já está cadastrado", Toast.LENGTH_SHORT).show();
         } else {
-            users.add(new Usuario(Senha, Usuario, Apelido));
+            users.add(new Usuario(senha, usuario, apelido));
 
             RepositoryUsers repositoryUsers = new RepositoryUsers(this);
-            repositoryUsers.adicionarUsuario(new Usuario(Senha, Usuario, Apelido));
+            repositoryUsers.adicionarUsuario(new Usuario(senha, usuario, apelido));
 
 
             Toast.makeText(this, "Usuario cadastrado", Toast.LENGTH_SHORT).show();

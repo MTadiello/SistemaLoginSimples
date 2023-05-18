@@ -9,7 +9,7 @@ import android.widget.TextView;
 
 import java.io.Serializable;
 
-public class Filha extends  AppCompatActivity implements Serializable {
+public class WelcomeActivity extends  AppCompatActivity implements Serializable {
 
 
 

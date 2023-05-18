@@ -20,11 +20,11 @@
             android:parentActivityName=".MainActivity"
             android:exported="false" />
         <activity
-            android:name=".Cadastro"
+            android:name=".CadastroActivity"
             android:parentActivityName=".MainActivity"
             android:exported="false" />
         <activity
-            android:name=".Filha"
+            android:name=".WelcomeActivity"
             android:exported="false" />
         <activity
             android:name=".MainActivity"
