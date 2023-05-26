@@ -55,20 +55,30 @@ public class RepositoryUsers extends SQLiteOpenHelper {
 
     }
 
+    public void deletarUsuario(Usuario usuario){
+
+        String sql = " delete from usuario  where id = " + usuario.getId();
+
+
+        Log.i("usuario","sql delete " + sql);
+        getWritableDatabase().execSQL(sql);
+
+    }
+
     public List<Usuario> listarUsuario(){
 
         List<Usuario> listarUsuario = new ArrayList<>();
         SQLiteDatabase db = getReadableDatabase();
-        Cursor cursor = db.rawQuery("select email, apelido, senha from usuario",null);
+        Cursor cursor = db.rawQuery("select id, email, apelido, senha from usuario",null);
         cursor.moveToFirst();
 
         for(int i=0; i < cursor.getCount(); i++){
 
             Usuario user = new Usuario();
-
-            user.setEmail(cursor.getString(0));
-            user.setApelido(String.valueOf(cursor.getString(1)));
-            user.setSenha(String.valueOf(cursor.getInt(2)));
+            user.setId(cursor.getInt(0));
+            user.setEmail(cursor.getString(1));
+            user.setApelido(String.valueOf(cursor.getString(2)));
+            user.setSenha(String.valueOf(cursor.getInt(3)));
 
 
             listarUsuario.add(user);

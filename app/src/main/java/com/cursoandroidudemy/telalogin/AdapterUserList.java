@@ -5,6 +5,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -15,10 +16,15 @@ import java.util.List;
 public class AdapterUserList extends ArrayAdapter<Usuario> {
 
     private final List<Usuario> list;
+    private final OnClick onClickListener;
 
-    public AdapterUserList(@NonNull Context context, List<Usuario> lista) {
+
+    public AdapterUserList(@NonNull Context context, List<Usuario> lista, OnClick onClickListener) {
         super(context, 0, lista);
         this.list = lista;
+        this.onClickListener = onClickListener;
+
+
     }
 
     @NonNull
@@ -37,8 +43,24 @@ public class AdapterUserList extends ArrayAdapter<Usuario> {
         TextView userName = view.findViewById(R.id.txtViewUserEmail);
         userName.setText(users.getEmail());
 
+        Button btDeletar = view.findViewById(R.id.btDelete);
+        btDeletar.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                onClickListener.onClick(users);
+
+            }
+        });
+
         return view;
     }
+
+    public interface OnClick{
+
+        public void onClick(Usuario usuario);
+
+    }
+
 }
 
 

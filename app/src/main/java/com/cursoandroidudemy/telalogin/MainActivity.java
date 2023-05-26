@@ -38,17 +38,17 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void onClickLogin(View view) {
-
+        //Buscando os edittxt no layout
         EditText tLogin = findViewById(R.id.tLogin);
         EditText tSenha = findViewById(R.id.tSenha);
-
-
+        //Pegando os valores inseridos pelo o usuario
         String login = tLogin.getText().toString();
         String senha = tSenha.getText().toString();
 
         boolean existeUsuario = false;
 
         Usuario usuario = null;
+
 
         for (Usuario c : usuarioCadastro) {
 
@@ -80,7 +80,6 @@ public class MainActivity extends AppCompatActivity {
             alert("Usuário ou senha incorretos");
         }
 
-
     }
 
     public void onClickCadastro(View view) {
@@ -89,21 +88,7 @@ public class MainActivity extends AppCompatActivity {
         startActivityForResult(intent, 2);
     }
 
-    /*@Override
-    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
-        super.onActivityResult(requestCode, resultCode, data);
-
-        if (resultCode == RESULT_OK && requestCode == 2) {
-            List<Usuario> valor = (List<Usuario>) data.getExtras().getSerializable("telacadastro");
-            String welcome = data.getExtras().getString("telainicial");
-            UsuarioCadastro.add(valor.get(0));
-            for (Usuario c : valor)
-                Log.i("Alisson", c.toString());
-        }
-    }*/
-
-
-    public void onClickListaUsuarios(View view) {
+     public void onClickListaUsuarios(View view) {
 
         Intent intent = new Intent(this, ListaUsuariosActivity.class);
         startActivity(intent);
